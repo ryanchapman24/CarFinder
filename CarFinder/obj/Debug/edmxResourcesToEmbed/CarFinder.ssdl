@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BodyStyles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BodyStyle" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MakeId" Type="int" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Trim" Type="varchar" MaxLength="128" />
+    <Property Name="Year" Type="varchar" MaxLength="50" />
+    <Property Name="BodyStyleId" Type="int" />
+    <Property Name="EnginePositionId" Type="int" />
+    <Property Name="EngineCC" Type="varchar" MaxLength="50" />
+    <Property Name="EngineCyl" Type="varchar" MaxLength="50" />
+    <Property Name="EngineTypeId" Type="int" />
+    <Property Name="EngineValvesPerCyl" Type="varchar" MaxLength="50" />
+    <Property Name="EnginePowerPS" Type="varchar" MaxLength="50" />
+    <Property Name="EnginePowerRPM" Type="varchar" MaxLength="50" />
+    <Property Name="EngineTorqueNM" Type="varchar" MaxLength="50" />
+    <Property Name="EngineTorqueRPM" Type="varchar" MaxLength="50" />
+    <Property Name="EngineBoreMM" Type="varchar" MaxLength="50" />
+    <Property Name="EngineStrokeMM" Type="varchar" MaxLength="50" />
+    <Property Name="EngineCompression" Type="varchar" MaxLength="50" />
+    <Property Name="EngineFuelId" Type="int" />
+    <Property Name="TopSpeedKPH" Type="varchar" MaxLength="50" />
+    <Property Name="ZeroTo100KPH" Type="varchar" MaxLength="50" />
+    <Property Name="DriveTypeId" Type="int" />
+    <Property Name="TransmissionTypeId" Type="int" />
+    <Property Name="Seats" Type="varchar" MaxLength="50" />
+    <Property Name="Doors" Type="varchar" MaxLength="50" />
+    <Property Name="WeightKG" Type="varchar" MaxLength="50" />
+    <Property Name="LengthMM" Type="varchar" MaxLength="50" />
+    <Property Name="WidthMM" Type="varchar" MaxLength="50" />
+    <Property Name="HeightMM" Type="varchar" MaxLength="50" />
+    <Property Name="WheelbaseMM" Type="varchar" MaxLength="50" />
+    <Property Name="LKM_Hwy" Type="varchar" MaxLength="50" />
+    <Property Name="LKM_Mixed" Type="varchar" MaxLength="50" />
+    <Property Name="LKM_City" Type="varchar" MaxLength="50" />
+    <Property Name="FuelCapacityL" Type="varchar" MaxLength="50" />
+    <Property Name="SoldInUS" Type="varchar" MaxLength="50" />
+    <Property Name="CO2" Type="varchar" MaxLength="50" />
+    <Property Name="MakeDisplay" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DriveTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriveType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EngineFuels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EngineFuelType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EnginePositions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EnginePosition" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EngineTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EngineType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Makes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Make" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TransmissionTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransmissionType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Cars_BodyStyles">
+    <End Role="BodyStyles" Type="Self.BodyStyles" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BodyStyles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="BodyStyleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_DriveTypes">
+    <End Role="DriveTypes" Type="Self.DriveTypes" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DriveTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="DriveTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_EngineFuels">
+    <End Role="EngineFuels" Type="Self.EngineFuels" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngineFuels">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="EngineFuelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_EnginePositions">
+    <End Role="EnginePositions" Type="Self.EnginePositions" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnginePositions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="EnginePositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_EngineTypes">
+    <End Role="EngineTypes" Type="Self.EngineTypes" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngineTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="EngineTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_Makes">
+    <End Role="Makes" Type="Self.Makes" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="MakeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_TransmissionTypes">
+    <End Role="TransmissionTypes" Type="Self.TransmissionTypes" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransmissionTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="TransmissionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UniqueCarMakes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UniqueCarMakesForYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="year" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UniqueCarModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UniqueCarModelsForYearAndMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="year" Type="varchar" Mode="In" />
+    <Parameter Name="make" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UniqueCarsForEngineSize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="engineSize" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UniqueCarsForYearAndMakeAndModelAndTrim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="year" Type="varchar" Mode="In" />
+    <Parameter Name="make" Type="varchar" Mode="In" />
+    <Parameter Name="model" Type="varchar" Mode="In" />
+    <Parameter Name="trim" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UniqueCarTrims" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UniqueCarTrimsForYearAndMakeAndModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="year" Type="varchar" Mode="In" />
+    <Parameter Name="make" Type="varchar" Mode="In" />
+    <Parameter Name="model" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UniqueCarYears" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UniqueSUVs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="BodyStyles" EntityType="Self.BodyStyles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DriveTypes" EntityType="Self.DriveTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EngineFuels" EntityType="Self.EngineFuels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnginePositions" EntityType="Self.EnginePositions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EngineTypes" EntityType="Self.EngineTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Makes" EntityType="Self.Makes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransmissionTypes" EntityType="Self.TransmissionTypes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cars_BodyStyles" Association="Self.FK_Cars_BodyStyles">
+      <End Role="BodyStyles" EntitySet="BodyStyles" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_DriveTypes" Association="Self.FK_Cars_DriveTypes">
+      <End Role="DriveTypes" EntitySet="DriveTypes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_EngineFuels" Association="Self.FK_Cars_EngineFuels">
+      <End Role="EngineFuels" EntitySet="EngineFuels" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_EnginePositions" Association="Self.FK_Cars_EnginePositions">
+      <End Role="EnginePositions" EntitySet="EnginePositions" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_EngineTypes" Association="Self.FK_Cars_EngineTypes">
+      <End Role="EngineTypes" EntitySet="EngineTypes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_Makes" Association="Self.FK_Cars_Makes">
+      <End Role="Makes" EntitySet="Makes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_TransmissionTypes" Association="Self.FK_Cars_TransmissionTypes">
+      <End Role="TransmissionTypes" EntitySet="TransmissionTypes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

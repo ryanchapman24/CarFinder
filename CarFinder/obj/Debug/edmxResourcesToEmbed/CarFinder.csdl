@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BodyStyle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BodyStyle1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_BodyStyles" FromRole="BodyStyles" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MakeId" Type="Int32" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Trim" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BodyStyleId" Type="Int32" />
+    <Property Name="EnginePositionId" Type="Int32" />
+    <Property Name="EngineCC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineCyl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineTypeId" Type="Int32" />
+    <Property Name="EngineValvesPerCyl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnginePowerPS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EnginePowerRPM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineTorqueNM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineTorqueRPM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineBoreMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineStrokeMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineCompression" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineFuelId" Type="Int32" />
+    <Property Name="TopSpeedKPH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ZeroTo100KPH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DriveTypeId" Type="Int32" />
+    <Property Name="TransmissionTypeId" Type="Int32" />
+    <Property Name="Seats" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Doors" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WeightKG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LengthMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WidthMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HeightMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WheelbaseMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LKM_Hwy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LKM_Mixed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LKM_City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FuelCapacityL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SoldInUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CO2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MakeDisplay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BodyStyle" Relationship="Self.FK_Cars_BodyStyles" FromRole="Cars" ToRole="BodyStyles" />
+    <NavigationProperty Name="DriveType" Relationship="Self.FK_Cars_DriveTypes" FromRole="Cars" ToRole="DriveTypes" />
+    <NavigationProperty Name="EngineFuel" Relationship="Self.FK_Cars_EngineFuels" FromRole="Cars" ToRole="EngineFuels" />
+    <NavigationProperty Name="EnginePosition" Relationship="Self.FK_Cars_EnginePositions" FromRole="Cars" ToRole="EnginePositions" />
+    <NavigationProperty Name="EngineType" Relationship="Self.FK_Cars_EngineTypes" FromRole="Cars" ToRole="EngineTypes" />
+    <NavigationProperty Name="Make" Relationship="Self.FK_Cars_Makes" FromRole="Cars" ToRole="Makes" />
+    <NavigationProperty Name="TransmissionType" Relationship="Self.FK_Cars_TransmissionTypes" FromRole="Cars" ToRole="TransmissionTypes" />
+  </EntityType>
+  <EntityType Name="DriveType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriveType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_DriveTypes" FromRole="DriveTypes" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="EngineFuel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EngineFuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_EngineFuels" FromRole="EngineFuels" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="EnginePosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnginePosition1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_EnginePositions" FromRole="EnginePositions" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="EngineType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EngineType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_EngineTypes" FromRole="EngineTypes" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="Make">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Make1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Makes" FromRole="Makes" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TransmissionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransmissionType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_TransmissionTypes" FromRole="TransmissionTypes" ToRole="Cars" />
+  </EntityType>
+  <Association Name="FK_Cars_BodyStyles">
+    <End Role="BodyStyles" Type="Self.BodyStyle" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BodyStyles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="BodyStyleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_DriveTypes">
+    <End Role="DriveTypes" Type="Self.DriveType" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DriveTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="DriveTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_EngineFuels">
+    <End Role="EngineFuels" Type="Self.EngineFuel" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngineFuels">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="EngineFuelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_EnginePositions">
+    <End Role="EnginePositions" Type="Self.EnginePosition" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnginePositions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="EnginePositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_EngineTypes">
+    <End Role="EngineTypes" Type="Self.EngineType" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngineTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="EngineTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_Makes">
+    <End Role="Makes" Type="Self.Make" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="MakeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_TransmissionTypes">
+    <End Role="TransmissionTypes" Type="Self.TransmissionType" Multiplicity="0..1" />
+    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransmissionTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="TransmissionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BodyStyles" EntityType="Self.BodyStyle" />
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="DriveTypes" EntityType="Self.DriveType" />
+    <EntitySet Name="EngineFuels" EntityType="Self.EngineFuel" />
+    <EntitySet Name="EnginePositions" EntityType="Self.EnginePosition" />
+    <EntitySet Name="EngineTypes" EntityType="Self.EngineType" />
+    <EntitySet Name="Makes" EntityType="Self.Make" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TransmissionTypes" EntityType="Self.TransmissionType" />
+    <AssociationSet Name="FK_Cars_BodyStyles" Association="Self.FK_Cars_BodyStyles">
+      <End Role="BodyStyles" EntitySet="BodyStyles" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_DriveTypes" Association="Self.FK_Cars_DriveTypes">
+      <End Role="DriveTypes" EntitySet="DriveTypes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_EngineFuels" Association="Self.FK_Cars_EngineFuels">
+      <End Role="EngineFuels" EntitySet="EngineFuels" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_EnginePositions" Association="Self.FK_Cars_EnginePositions">
+      <End Role="EnginePositions" EntitySet="EnginePositions" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_EngineTypes" Association="Self.FK_Cars_EngineTypes">
+      <End Role="EngineTypes" EntitySet="EngineTypes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_Makes" Association="Self.FK_Cars_Makes">
+      <End Role="Makes" EntitySet="Makes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_TransmissionTypes" Association="Self.FK_Cars_TransmissionTypes">
+      <End Role="TransmissionTypes" EntitySet="TransmissionTypes" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="UniqueCarMakes" ReturnType="Collection(String)" />
+    <FunctionImport Name="UniqueCarMakesForYear" ReturnType="Collection(String)">
+      <Parameter Name="year" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UniqueCarModels" ReturnType="Collection(String)" />
+    <FunctionImport Name="UniqueCarModelsForYearAndMake" ReturnType="Collection(String)">
+      <Parameter Name="year" Mode="In" Type="String" />
+      <Parameter Name="make" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UniqueCarsForEngineSize" ReturnType="Collection(Model.UniqueCarsForEngineSize_Result)">
+      <Parameter Name="engineSize" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UniqueCarsForYearAndMakeAndModelAndTrim" ReturnType="Collection(Model.UniqueCarsForYearAndMakeAndModelAndTrim_Result)">
+      <Parameter Name="year" Mode="In" Type="String" />
+      <Parameter Name="make" Mode="In" Type="String" />
+      <Parameter Name="model" Mode="In" Type="String" />
+      <Parameter Name="trim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UniqueCarTrims" ReturnType="Collection(String)" />
+    <FunctionImport Name="UniqueCarTrimsForYearAndMakeAndModel" ReturnType="Collection(String)">
+      <Parameter Name="year" Mode="In" Type="String" />
+      <Parameter Name="make" Mode="In" Type="String" />
+      <Parameter Name="model" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UniqueCarYears" ReturnType="Collection(String)" />
+    <FunctionImport Name="UniqueSUVs" ReturnType="Collection(Model.UniqueSUVs_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UniqueCarsForEngineSize_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="MakeId" Nullable="true" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Trim" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Year" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BodyStyleId" Nullable="true" />
+    <Property Type="Int32" Name="EnginePositionId" Nullable="true" />
+    <Property Type="String" Name="EngineCC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineCyl" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EngineTypeId" Nullable="true" />
+    <Property Type="String" Name="EngineValvesPerCyl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnginePowerPS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnginePowerRPM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineTorqueNM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineTorqueRPM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineBoreMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineStrokeMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineCompression" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EngineFuelId" Nullable="true" />
+    <Property Type="String" Name="TopSpeedKPH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ZeroTo100KPH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriveTypeId" Nullable="true" />
+    <Property Type="Int32" Name="TransmissionTypeId" Nullable="true" />
+    <Property Type="String" Name="Seats" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Doors" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WeightKG" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LengthMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WidthMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HeightMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WheelbaseMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_Hwy" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_Mixed" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FuelCapacityL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SoldInUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CO2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MakeDisplay" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="UniqueCarsForYearAndMakeAndModelAndTrim_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="MakeId" Nullable="true" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Trim" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Year" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BodyStyleId" Nullable="true" />
+    <Property Type="Int32" Name="EnginePositionId" Nullable="true" />
+    <Property Type="String" Name="EngineCC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineCyl" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EngineTypeId" Nullable="true" />
+    <Property Type="String" Name="EngineValvesPerCyl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnginePowerPS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnginePowerRPM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineTorqueNM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineTorqueRPM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineBoreMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineStrokeMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineCompression" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EngineFuelId" Nullable="true" />
+    <Property Type="String" Name="TopSpeedKPH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ZeroTo100KPH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriveTypeId" Nullable="true" />
+    <Property Type="Int32" Name="TransmissionTypeId" Nullable="true" />
+    <Property Type="String" Name="Seats" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Doors" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WeightKG" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LengthMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WidthMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HeightMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WheelbaseMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_Hwy" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_Mixed" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FuelCapacityL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SoldInUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CO2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MakeDisplay" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Id1" Nullable="false" />
+    <Property Type="String" Name="Make" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="UniqueSUVs_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="MakeId" Nullable="true" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Trim" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Year" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BodyStyleId" Nullable="true" />
+    <Property Type="Int32" Name="EnginePositionId" Nullable="true" />
+    <Property Type="String" Name="EngineCC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineCyl" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EngineTypeId" Nullable="true" />
+    <Property Type="String" Name="EngineValvesPerCyl" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnginePowerPS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnginePowerRPM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineTorqueNM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineTorqueRPM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineBoreMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineStrokeMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EngineCompression" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EngineFuelId" Nullable="true" />
+    <Property Type="String" Name="TopSpeedKPH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ZeroTo100KPH" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DriveTypeId" Nullable="true" />
+    <Property Type="Int32" Name="TransmissionTypeId" Nullable="true" />
+    <Property Type="String" Name="Seats" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Doors" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WeightKG" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LengthMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WidthMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HeightMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WheelbaseMM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_Hwy" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_Mixed" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LKM_City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FuelCapacityL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SoldInUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CO2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MakeDisplay" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Id1" Nullable="false" />
+    <Property Type="String" Name="BodyStyle" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
